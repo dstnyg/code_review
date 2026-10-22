@@ -1,0 +1,902 @@
+[
+  {
+    "key": "lc-1",
+    "num": 1,
+    "title": "两数之和",
+    "topic": "哈希",
+    "diff": "简单",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/two-sum/"
+  },
+  {
+    "key": "lc-49",
+    "num": 49,
+    "title": "字母异位词分组",
+    "topic": "哈希",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/group-anagrams/"
+  },
+  {
+    "key": "lc-128",
+    "num": 128,
+    "title": "最长连续序列",
+    "topic": "哈希",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/longest-consecutive-sequence/"
+  },
+  {
+    "key": "lc-283",
+    "num": 283,
+    "title": "移动零",
+    "topic": "双指针",
+    "diff": "简单",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/move-zeroes/"
+  },
+  {
+    "key": "lc-11",
+    "num": 11,
+    "title": "盛最多水的容器",
+    "topic": "双指针",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/container-with-most-water/"
+  },
+  {
+    "key": "lc-15",
+    "num": 15,
+    "title": "三数之和",
+    "topic": "双指针",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/3sum/"
+  },
+  {
+    "key": "lc-3",
+    "num": 3,
+    "title": "无重复字符的最长子串",
+    "topic": "滑动窗口",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/longest-substring-without-repeating-characters/"
+  },
+  {
+    "key": "lc-438",
+    "num": 438,
+    "title": "找到字符串中所有字母异位词",
+    "topic": "滑动窗口",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/find-all-anagrams-in-a-string/"
+  },
+  {
+    "key": "lc-560",
+    "num": 560,
+    "title": "和为 K 的子数组",
+    "topic": "前缀和+哈希",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/subarray-sum-equals-k/"
+  },
+  {
+    "key": "lc-53",
+    "num": 53,
+    "title": "最大子数组和",
+    "topic": "数组/DP",
+    "diff": "中等",
+    "day": 1,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/maximum-subarray/"
+  },
+  {
+    "key": "lc-56",
+    "num": 56,
+    "title": "合并区间",
+    "topic": "排序+数组",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/merge-intervals/"
+  },
+  {
+    "key": "lc-189",
+    "num": 189,
+    "title": "轮转数组",
+    "topic": "数组",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/rotate-array/"
+  },
+  {
+    "key": "lc-238",
+    "num": 238,
+    "title": "除了自身以外数组的乘积",
+    "topic": "前后缀积",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/product-of-array-except-self/"
+  },
+  {
+    "key": "lc-73",
+    "num": 73,
+    "title": "矩阵置零",
+    "topic": "矩阵",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/set-matrix-zeroes/"
+  },
+  {
+    "key": "lc-54",
+    "num": 54,
+    "title": "螺旋矩阵",
+    "topic": "矩阵",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/spiral-matrix/"
+  },
+  {
+    "key": "lc-48",
+    "num": 48,
+    "title": "旋转图像",
+    "topic": "矩阵",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/rotate-image/"
+  },
+  {
+    "key": "lc-240",
+    "num": 240,
+    "title": "搜索二维矩阵 II",
+    "topic": "矩阵/双指针",
+    "diff": "中等",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/search-a-2d-matrix-ii/"
+  },
+  {
+    "key": "lc-160",
+    "num": 160,
+    "title": "相交链表",
+    "topic": "链表",
+    "diff": "简单",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/intersection-of-two-linked-lists/"
+  },
+  {
+    "key": "lc-206",
+    "num": 206,
+    "title": "反转链表",
+    "topic": "链表",
+    "diff": "简单",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/reverse-linked-list/"
+  },
+  {
+    "key": "lc-234",
+    "num": 234,
+    "title": "回文链表",
+    "topic": "链表",
+    "diff": "简单",
+    "day": 2,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/palindrome-linked-list/"
+  },
+  {
+    "key": "lc-141",
+    "num": 141,
+    "title": "环形链表",
+    "topic": "链表",
+    "diff": "简单",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/linked-list-cycle/"
+  },
+  {
+    "key": "lc-21",
+    "num": 21,
+    "title": "合并两个有序链表",
+    "topic": "链表",
+    "diff": "简单",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/merge-two-sorted-lists/"
+  },
+  {
+    "key": "lc-142",
+    "num": 142,
+    "title": "环形链表 II",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/linked-list-cycle-ii/"
+  },
+  {
+    "key": "lc-2",
+    "num": 2,
+    "title": "两数相加",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/add-two-numbers/"
+  },
+  {
+    "key": "lc-19",
+    "num": 19,
+    "title": "删除链表的倒数第 N 个结点",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/remove-nth-node-from-end-of-list/"
+  },
+  {
+    "key": "lc-24",
+    "num": 24,
+    "title": "两两交换链表中的节点",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/swap-nodes-in-pairs/"
+  },
+  {
+    "key": "lc-138",
+    "num": 138,
+    "title": "随机链表的复制",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/copy-list-with-random-pointer/"
+  },
+  {
+    "key": "lc-148",
+    "num": 148,
+    "title": "排序链表",
+    "topic": "链表",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/sort-list/"
+  },
+  {
+    "key": "lc-146",
+    "num": 146,
+    "title": "LRU 缓存",
+    "topic": "链表/设计",
+    "diff": "中等",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/lru-cache/"
+  },
+  {
+    "key": "lc-94",
+    "num": 94,
+    "title": "二叉树的中序遍历",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 3,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/binary-tree-inorder-traversal/"
+  },
+  {
+    "key": "lc-104",
+    "num": 104,
+    "title": "二叉树的最大深度",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/maximum-depth-of-binary-tree/"
+  },
+  {
+    "key": "lc-226",
+    "num": 226,
+    "title": "翻转二叉树",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/invert-binary-tree/"
+  },
+  {
+    "key": "lc-101",
+    "num": 101,
+    "title": "对称二叉树",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/symmetric-tree/"
+  },
+  {
+    "key": "lc-543",
+    "num": 543,
+    "title": "二叉树的直径",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/diameter-of-binary-tree/"
+  },
+  {
+    "key": "lc-102",
+    "num": 102,
+    "title": "二叉树的层序遍历",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/binary-tree-level-order-traversal/"
+  },
+  {
+    "key": "lc-108",
+    "num": 108,
+    "title": "将有序数组转换为二叉搜索树",
+    "topic": "二叉树",
+    "diff": "简单",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/"
+  },
+  {
+    "key": "lc-98",
+    "num": 98,
+    "title": "验证二叉搜索树",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/validate-binary-search-tree/"
+  },
+  {
+    "key": "lc-230",
+    "num": 230,
+    "title": "二叉搜索树中第 K 小的元素",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/kth-smallest-element-in-a-bst/"
+  },
+  {
+    "key": "lc-199",
+    "num": 199,
+    "title": "二叉树的右视图",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/binary-tree-right-side-view/"
+  },
+  {
+    "key": "lc-114",
+    "num": 114,
+    "title": "二叉树展开为链表",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 4,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/"
+  },
+  {
+    "key": "lc-105",
+    "num": 105,
+    "title": "从前序与中序遍历序列构造二叉树",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+  },
+  {
+    "key": "lc-437",
+    "num": 437,
+    "title": "路径总和 III",
+    "topic": "二叉树/前缀和",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/path-sum-iii/"
+  },
+  {
+    "key": "lc-236",
+    "num": 236,
+    "title": "二叉树的最近公共祖先",
+    "topic": "二叉树",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/"
+  },
+  {
+    "key": "lc-200",
+    "num": 200,
+    "title": "岛屿数量",
+    "topic": "图/DFS",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/number-of-islands/"
+  },
+  {
+    "key": "lc-994",
+    "num": 994,
+    "title": "腐烂的橘子",
+    "topic": "图/BFS",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/rotting-oranges/"
+  },
+  {
+    "key": "lc-207",
+    "num": 207,
+    "title": "课程表",
+    "topic": "图/拓扑排序",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/course-schedule/"
+  },
+  {
+    "key": "lc-208",
+    "num": 208,
+    "title": "实现 Trie (前缀树)",
+    "topic": "Trie",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/implement-trie-prefix-tree/"
+  },
+  {
+    "key": "lc-46",
+    "num": 46,
+    "title": "全排列",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/permutations/"
+  },
+  {
+    "key": "lc-78",
+    "num": 78,
+    "title": "子集",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/subsets/"
+  },
+  {
+    "key": "lc-17",
+    "num": 17,
+    "title": "电话号码的字母组合",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 5,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/letter-combinations-of-a-phone-number/"
+  },
+  {
+    "key": "lc-39",
+    "num": 39,
+    "title": "组合总和",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/combination-sum/"
+  },
+  {
+    "key": "lc-22",
+    "num": 22,
+    "title": "括号生成",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/generate-parentheses/"
+  },
+  {
+    "key": "lc-79",
+    "num": 79,
+    "title": "单词搜索",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/word-search/"
+  },
+  {
+    "key": "lc-131",
+    "num": 131,
+    "title": "分割回文串",
+    "topic": "回溯",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/palindrome-partitioning/"
+  },
+  {
+    "key": "lc-35",
+    "num": 35,
+    "title": "搜索插入位置",
+    "topic": "二分查找",
+    "diff": "简单",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/search-insert-position/"
+  },
+  {
+    "key": "lc-74",
+    "num": 74,
+    "title": "搜索二维矩阵",
+    "topic": "二分查找",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/search-a-2d-matrix/"
+  },
+  {
+    "key": "lc-34",
+    "num": 34,
+    "title": "在排序数组中查找元素的第一个和最后一个位置",
+    "topic": "二分查找",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/"
+  },
+  {
+    "key": "lc-33",
+    "num": 33,
+    "title": "搜索旋转排序数组",
+    "topic": "二分查找",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/search-in-rotated-sorted-array/"
+  },
+  {
+    "key": "lc-153",
+    "num": 153,
+    "title": "寻找旋转排序数组中的最小值",
+    "topic": "二分查找",
+    "diff": "中等",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/"
+  },
+  {
+    "key": "lc-20",
+    "num": 20,
+    "title": "有效的括号",
+    "topic": "栈",
+    "diff": "简单",
+    "day": 6,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/valid-parentheses/"
+  },
+  {
+    "key": "lc-155",
+    "num": 155,
+    "title": "最小栈",
+    "topic": "栈",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/min-stack/"
+  },
+  {
+    "key": "lc-394",
+    "num": 394,
+    "title": "字符串解码",
+    "topic": "栈",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/decode-string/"
+  },
+  {
+    "key": "lc-739",
+    "num": 739,
+    "title": "每日温度",
+    "topic": "单调栈",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/daily-temperatures/"
+  },
+  {
+    "key": "lc-215",
+    "num": 215,
+    "title": "数组中的第K个最大元素",
+    "topic": "堆/快选",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/kth-largest-element-in-an-array/"
+  },
+  {
+    "key": "lc-347",
+    "num": 347,
+    "title": "前 K 个高频元素",
+    "topic": "堆/哈希",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/top-k-frequent-elements/"
+  },
+  {
+    "key": "lc-121",
+    "num": 121,
+    "title": "买卖股票的最佳时机",
+    "topic": "贪心",
+    "diff": "简单",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/"
+  },
+  {
+    "key": "lc-55",
+    "num": 55,
+    "title": "跳跃游戏",
+    "topic": "贪心",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/jump-game/"
+  },
+  {
+    "key": "lc-45",
+    "num": 45,
+    "title": "跳跃游戏 II",
+    "topic": "贪心",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/jump-game-ii/"
+  },
+  {
+    "key": "lc-763",
+    "num": 763,
+    "title": "划分字母区间",
+    "topic": "贪心",
+    "diff": "中等",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/partition-labels/"
+  },
+  {
+    "key": "lc-70",
+    "num": 70,
+    "title": "爬楼梯",
+    "topic": "动态规划",
+    "diff": "简单",
+    "day": 7,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/climbing-stairs/"
+  },
+  {
+    "key": "lc-118",
+    "num": 118,
+    "title": "杨辉三角",
+    "topic": "动态规划",
+    "diff": "简单",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/pascals-triangle/"
+  },
+  {
+    "key": "lc-198",
+    "num": 198,
+    "title": "打家劫舍",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/house-robber/"
+  },
+  {
+    "key": "lc-279",
+    "num": 279,
+    "title": "完全平方数",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/perfect-squares/"
+  },
+  {
+    "key": "lc-322",
+    "num": 322,
+    "title": "零钱兑换",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/coin-change/"
+  },
+  {
+    "key": "lc-139",
+    "num": 139,
+    "title": "单词拆分",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/word-break/"
+  },
+  {
+    "key": "lc-300",
+    "num": 300,
+    "title": "最长递增子序列",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/longest-increasing-subsequence/"
+  },
+  {
+    "key": "lc-152",
+    "num": 152,
+    "title": "乘积最大子数组",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/maximum-product-subarray/"
+  },
+  {
+    "key": "lc-416",
+    "num": 416,
+    "title": "分割等和子集",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/partition-equal-subset-sum/"
+  },
+  {
+    "key": "lc-62",
+    "num": 62,
+    "title": "不同路径",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/unique-paths/"
+  },
+  {
+    "key": "lc-64",
+    "num": 64,
+    "title": "最小路径和",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 8,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/minimum-path-sum/"
+  },
+  {
+    "key": "lc-5",
+    "num": 5,
+    "title": "最长回文子串",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/longest-palindromic-substring/"
+  },
+  {
+    "key": "lc-1143",
+    "num": 1143,
+    "title": "最长公共子序列",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/longest-common-subsequence/"
+  },
+  {
+    "key": "lc-72",
+    "num": 72,
+    "title": "编辑距离",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/edit-distance/"
+  },
+  {
+    "key": "lc-136",
+    "num": 136,
+    "title": "只出现一次的数字",
+    "topic": "位运算",
+    "diff": "简单",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/single-number/"
+  },
+  {
+    "key": "lc-169",
+    "num": 169,
+    "title": "多数元素",
+    "topic": "技巧",
+    "diff": "简单",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/majority-element/"
+  },
+  {
+    "key": "lc-75",
+    "num": 75,
+    "title": "颜色分类",
+    "topic": "双指针",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/sort-colors/"
+  },
+  {
+    "key": "lc-31",
+    "num": 31,
+    "title": "下一个排列",
+    "topic": "数组/技巧",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/next-permutation/"
+  },
+  {
+    "key": "lc-287",
+    "num": 287,
+    "title": "寻找重复数",
+    "topic": "快慢指针",
+    "diff": "中等",
+    "day": 9,
+    "origin": "official",
+    "url": "https://leetcode.cn/problems/find-the-duplicate-number/"
+  },
+  {
+    "key": "lc-209",
+    "num": 209,
+    "title": "长度最小的子数组",
+    "topic": "滑动窗口",
+    "diff": "中等",
+    "day": 9,
+    "origin": "extra",
+    "url": "https://leetcode.cn/problems/minimum-size-subarray-sum/"
+  },
+  {
+    "key": "lc-647",
+    "num": 647,
+    "title": "回文子串",
+    "topic": "动态规划",
+    "diff": "中等",
+    "day": 9,
+    "origin": "extra",
+    "url": "https://leetcode.cn/problems/palindromic-substrings/"
+  }
+]
