@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTraining } from '../app/TrainingContext';
 import { dateAdd, fmt, TODAY } from '../domain/training';
-import FIXED from '../data/problems.json';
 
 export function Panel({ title, subtitle, action, children, className = '' }) {
   return (
@@ -51,15 +50,15 @@ export function Stats() {
       'Hot 100 本轮',
       `${c.official}/${official}`,
       `拓展题已练 ${c.extra}/${all.length - official}`,
-      c.official / official,
+      official ? c.official / official : 0,
     ],
     [
       '到期复习',
       model.dueList().length,
       '按掌握程度与逾期时间排序',
-      model.dueList().length / all.length,
+      all.length ? model.dueList().length / all.length : 0,
     ],
-    ['稳定掌握', c.qualified, '两次绿色间隔至少 7 天', c.qualified / all.length],
+    ['稳定掌握', c.qualified, '两次绿色间隔至少 7 天', all.length ? c.qualified / all.length : 0],
   ];
   return (
     <div className="stats">
@@ -122,8 +121,8 @@ export function DayPlan() {
       <div className="daygrid">
         {Array.from({ length: 9 }, (_, i) => {
           const date = dateAdd(state.startDate, i),
-            ps = FIXED.filter((p) => p.day === i + 1),
-            done = ps.filter((p) => model.last(p.key)).length;
+            ps = model.allProblems().filter((p) => p.key.startsWith('lc-') && p.day === i + 1),
+            done = ps.filter((p) => model.history(p.key).length).length;
           return (
             <button
               className={`daybox ${date === viewDate ? 'on' : ''}`}
@@ -177,6 +176,22 @@ export function DatePicker() {
         ›
       </button>
       <button onClick={() => setViewDate(TODAY())}>今天</button>
+    </div>
+  );
+}
+
+export function DeletionNotice() {
+  const { state, lastDeleted, restoreProblem } = useTraining();
+  if (!lastDeleted || !(state.deleted || []).includes(lastDeleted.id)) return null;
+  return (
+    <div className="notice" role="status">
+      已删除「{lastDeleted.title}」，可从回收站恢复。
+      <button className="btn sm" onClick={() => restoreProblem(lastDeleted.id)}>
+        撤销删除
+      </button>
+      <Link className="btn sm" to="/settings">
+        查看回收站
+      </Link>
     </div>
   );
 }

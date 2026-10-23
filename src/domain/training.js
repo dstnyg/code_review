@@ -40,6 +40,9 @@ export const defaultState = () => ({
   custom: [],
   materials: {},
   dueOverrides: {},
+  deleted: [],
+  relearns: {},
+  relearnPending: {},
 });
 export function canonicalUrl(raw) {
   try {
@@ -143,6 +146,11 @@ export function normalizeState(raw) {
     });
   }
   const known = new Set([...FIXED, ...s.custom].map((p) => p.key));
+  s.deleted = [
+    ...new Set(
+      (Array.isArray(raw.deleted) ? raw.deleted : []).filter((id) => validId(id) && known.has(id)),
+    ),
+  ];
   for (const [id, arr] of Object.entries(raw.logs))
     if (validId(id) && known.has(id)) s.logs[id] = normalizeLogs(arr).slice(-2000);
   for (const [id, n] of Object.entries(raw.notes))
@@ -161,6 +169,30 @@ export function normalizeState(raw) {
       if (typeof m[k] === 'string') s.materials[id][k] = m[k].slice(0, max);
     s.materials[id].sourceUrl = referenceUrl(s.materials[id].sourceUrl) || '';
   }
+  for (const [id, dates] of Object.entries(raw.relearns || {})) {
+    if (validId(id) && known.has(id) && Array.isArray(dates))
+      s.relearns[id] = [...new Set(dates.filter(validDate))].sort().slice(-2000);
+  }
+  for (const [id, pending] of Object.entries(raw.relearnPending || {})) {
+    if (
+      !validId(id) ||
+      !known.has(id) ||
+      !pending ||
+      !validDate(pending.date) ||
+      s.relearns[id]?.at(-1) !== pending.date
+    )
+      continue;
+    s.relearnPending[id] = {
+      date: pending.date,
+      previousDates: [
+        ...new Set(
+          (Array.isArray(pending.previousDates) ? pending.previousDates : []).filter(
+            (d) => validDate(d) && d <= pending.date,
+          ),
+        ),
+      ].sort(),
+    };
+  }
   for (const [id, o] of Object.entries(raw.dueOverrides || {}))
     if (known.has(id) && o && validDate(o.date) && typeof o.basedOn === 'string')
       s.dueOverrides[id] = {
@@ -172,18 +204,28 @@ export function normalizeState(raw) {
 }
 
 export function createModel(state, viewDate = TODAY()) {
-  const allProblems = () => [...FIXED, ...state.custom];
+  const deleted = new Set(state.deleted || []);
+  const allProblems = () => [...FIXED, ...state.custom].filter((p) => !deleted.has(p.key));
   const getProblem = (id) => allProblems().find((p) => p.key === id);
   const material = (p) => ({ ...MATERIALS[p.key], ...state.materials[p.key] });
   const trainingDay = (date = viewDate) => dateDiff(date, state.startDate) + 1;
-  const plannedDate = (p) => p.plannedDate || dateAdd(state.startDate, p.day - 1);
-  const planned = (date = viewDate) => allProblems().filter((p) => plannedDate(p) === date);
+  const cycleStart = (id, date = viewDate) =>
+    (state.relearns?.[id] || []).filter((d) => d <= date).at(-1) || null;
+  const plannedDate = (p, date = viewDate) =>
+    cycleStart(p.key, date) || p.plannedDate || dateAdd(state.startDate, p.day - 1);
+  const planned = (date = viewDate) => allProblems().filter((p) => plannedDate(p, date) === date);
   const history = (id, date = viewDate) => (state.logs[id] || []).filter((h) => h.date <= date);
-  const last = (id, date = viewDate) => history(id, date).at(-1) || null;
+  const cycleHistory = (id, date = viewDate) => {
+    const pending = state.relearnPending?.[id];
+    if (pending && pending.date <= date) return [];
+    return history(id, date).filter((h) => !cycleStart(id, date) || h.date >= cycleStart(id, date));
+  };
+  const last = (id, date = viewDate) => cycleHistory(id, date).at(-1) || null;
+  const isRelearning = (id, date = viewDate) => !!cycleStart(id, date) && !last(id, date);
   const ratingName = (r) => ({ red: '未掌握', yellow: '待巩固', green: '已掌握' })[r] || '未练习';
   const fmtDay = (d) => (d < 1 ? '尚未开始' : 'D' + d);
   function timeToNext(id, date = viewDate) {
-    const hs = history(id, date),
+    const hs = cycleHistory(id, date),
       x = hs.at(-1);
     if (!x) return null;
     let streak = 0;
@@ -207,28 +249,46 @@ export function createModel(state, viewDate = TODAY()) {
       );
   }
   function counts(date = viewDate) {
-    const c = { solved: 0, red: 0, yellow: 0, green: 0, official: 0, extra: 0, qualified: 0 };
+    const c = {
+      solved: 0,
+      red: 0,
+      yellow: 0,
+      green: 0,
+      official: 0,
+      extra: 0,
+      qualified: 0,
+      relearning: 0,
+      unpracticed: 0,
+    };
     for (const p of allProblems()) {
       const hs = history(p.key, date),
         h = hs.at(-1);
-      if (!h) continue;
+      if (!h) {
+        if (isRelearning(p.key, date)) c.relearning++;
+        else c.unpracticed++;
+        continue;
+      }
       c.solved++;
-      c[h.rating]++;
+      const current = cycleHistory(p.key, date);
+      if (isRelearning(p.key, date)) c.relearning++;
+      else c[h.rating]++;
       c[p.origin === 'official' ? 'official' : 'extra']++;
       if (
-        hs.length > 1 &&
+        current.length > 1 &&
         h.rating === 'green' &&
-        hs.at(-2).rating === 'green' &&
-        dateDiff(h.date, hs.at(-2).date) >= 7
+        current.at(-2).rating === 'green' &&
+        dateDiff(h.date, current.at(-2).date) >= 7
       )
         c.qualified++;
     }
     return c;
   }
   const doneOn = (date = viewDate) =>
-    allProblems().filter((p) => (state.logs[p.key] || []).some((h) => h.date === date));
+    allProblems().filter(
+      (p) => !isRelearning(p.key, date) && (state.logs[p.key] || []).some((h) => h.date === date),
+    );
   const backlog = (date = viewDate) =>
-    allProblems().filter((p) => plannedDate(p) < date && !last(p.key, date));
+    allProblems().filter((p) => plannedDate(p, date) < date && !last(p.key, date));
   return {
     allProblems,
     getProblem,
@@ -237,6 +297,9 @@ export function createModel(state, viewDate = TODAY()) {
     plannedDate,
     planned,
     history,
+    cycleHistory,
+    cycleStart,
+    isRelearning,
     last,
     timeToNext,
     dueList,

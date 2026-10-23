@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import FIXED from '../data/problems.json';
 import { useTraining } from '../app/TrainingContext';
 import { AddButton, Panel } from '../components/Common';
 import { bulkAdd } from '../domain/actions';
@@ -6,12 +7,24 @@ import { defaultState, TODAY, validDate } from '../domain/training';
 import { download, parseBackup, STORAGE_KEY } from '../storage/backup';
 
 export default function Settings() {
-  const { state, viewDate, commit, toast, exportData, setViewDate, clearUndo, storageError } =
-    useTraining();
+  const {
+    state,
+    viewDate,
+    commit,
+    toast,
+    exportData,
+    setViewDate,
+    clearUndo,
+    storageError,
+    restoreProblem,
+  } = useTraining();
   const [bulk, setBulk] = useState(''),
     [date, setDate] = useState(viewDate),
     [result, setResult] = useState('');
   const fileInput = useRef(null);
+  const deletedProblems = [...FIXED, ...state.custom].filter((p) =>
+    (state.deleted || []).includes(p.key),
+  );
   async function importFile(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -191,6 +204,33 @@ export default function Settings() {
         <p className="footnote">
           数据保存在当前浏览器。换设备、清理浏览器或更改访问地址前，请先导出备份。页面可通过本地服务离线使用，访问题目链接需要网络。
         </p>
+      </Panel>
+      <Panel
+        title="题目回收站"
+        subtitle={'已删除 ' + deletedProblems.length + ' 道，内置题和自定义题均可恢复。'}
+      >
+        <p className="helper">
+          删除的题目不再出现在训练安排、复习队列或统计中。练习记录、笔记和资料保留，恢复后重新显示；回收站随
+          JSON 备份保存。
+        </p>
+        {deletedProblems.length ? (
+          deletedProblems.map((problem) => (
+            <div className="row between history-entry" key={problem.key}>
+              <span>
+                {problem.num}. {problem.title} · {(state.logs[problem.key] || []).length} 条练习记录
+              </span>
+              <button
+                className="btn sm"
+                aria-label={'恢复 ' + problem.num + '. ' + problem.title}
+                onClick={() => restoreProblem(problem.key)}
+              >
+                恢复题目
+              </button>
+            </div>
+          ))
+        ) : (
+          <p className="helper">回收站为空。</p>
+        )}
       </Panel>
       <Panel title="题库与答案说明" subtitle="保留原有 90 道题和 9 天训练顺序。">
         <p className="helper">

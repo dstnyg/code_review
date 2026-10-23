@@ -8,9 +8,7 @@ export default function Insights() {
     all = model.allProblems(),
     c = model.counts();
   const topics = [...new Set(all.map((p) => p.topic))];
-  const records = Object.values(state.logs)
-      .flat()
-      .filter((h) => h.date <= viewDate),
+  const records = all.flatMap((p) => state.logs[p.key] || []).filter((h) => h.date <= viewDate),
     days = [...new Set(records.map((h) => h.date))].sort().reverse().slice(0, 12);
   return (
     <>
@@ -50,8 +48,12 @@ export default function Insights() {
                 </div>
               ))}
               <div className="ruleitem">
+                <span className="pill purple">重新复习中</span>
+                <b>{c.relearning} 道</b>
+              </div>
+              <div className="ruleitem">
                 <span>未练习</span>
-                <b>{all.length - c.solved} 道</b>
+                <b>{c.unpracticed} 道</b>
               </div>
             </div>
           </Panel>

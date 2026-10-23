@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTraining } from '../app/TrainingContext';
 import { ratingName } from '../domain/actions';
 import {
@@ -108,7 +109,11 @@ function History({ problem }) {
           </div>
         </>
       ) : (
-        <p className="helper">完成首次评级后生成复习日期。</p>
+        <p className="helper">
+          {model.isRelearning(problem.key)
+            ? '重新复习中，完成本次评级后生成新的复习日期。历史练习记录保留如下。'
+            : '完成首次评级后生成复习日期。'}
+        </p>
       )}
       {history
         .slice()
@@ -117,7 +122,13 @@ function History({ problem }) {
         .map((h) => (
           <div className="row between history-entry" key={h.date}>
             <span>
-              {h.date} · {h.kind === 'new' ? '首次练习' : '复习'}
+              {h.date} ·{' '}
+              {model.cycleStart(problem.key, h.date) &&
+              model.cycleHistory(problem.key, h.date)[0]?.date === h.date
+                ? '重新复习'
+                : h.kind === 'new'
+                  ? '首次练习'
+                  : '复习'}
             </span>
             <span className={`pill ${h.rating}`}>{ratingName(h.rating)}</span>
           </div>
@@ -231,15 +242,18 @@ function Learning({ problem }) {
   );
 }
 export default function ProblemCard({ problem, variant = 'daily' }) {
-  const { model, viewDate, openEditor } = useTraining(),
+  const navigate = useNavigate();
+  const { model, viewDate, openEditor, deleteProblem, relearn, cancelRelearn } = useTraining(),
     latest = model.last(problem.key),
     next = model.timeToNext(problem.key);
   const over = next ? Math.max(0, dateDiff(viewDate, next.date)) : 0;
+  const relearning = model.isRelearning(problem.key);
   return (
     <article className={`problem ${variant}`} data-problem={problem.key}>
       <div className="problem-main">
         <div className="ptitle">
           <ProblemLink problem={problem} />
+          {relearning && <span className="pill purple">重新复习中</span>}
           {latest && <span className={`pill ${latest.rating}`}>{ratingName(latest.rating)}</span>}
           {variant === 'review' && (
             <span className={`pill ${over ? 'red' : 'dark'}`}>
@@ -251,7 +265,13 @@ export default function ProblemCard({ problem, variant = 'daily' }) {
           <span>{problem.topic}</span>
           <span>{problem.diff}</span>
           <span>{problem.origin === 'official' ? 'Hot 100' : '拓展题'}</span>
-          <span>{next ? `下次 ${fmt(next.date)}` : '评级后加入复习'}</span>
+          <span>
+            {relearning
+              ? '完成重新复习并评级后重新安排复习'
+              : next
+                ? `下次 ${fmt(next.date)}`
+                : '评级后加入复习'}
+          </span>
         </div>
       </div>
       {variant === 'library' ? (
@@ -266,6 +286,28 @@ export default function ProblemCard({ problem, variant = 'daily' }) {
       ) : (
         <GradeButtons problem={problem} />
       )}
+      {
+        <button
+          className="btn sm"
+          onClick={() => {
+            if (relearn(problem.key)) navigate('/daily');
+          }}
+        >
+          重新复习
+        </button>
+      }
+      {relearning && (
+        <button className="btn sm" onClick={() => cancelRelearn(problem.key)}>
+          取消重新复习
+        </button>
+      )}
+      <button
+        className="btn sm danger"
+        aria-label={'删除 ' + problem.num + '. ' + problem.title}
+        onClick={() => deleteProblem(problem.key)}
+      >
+        删除题目
+      </button>
       <Learning problem={problem} />
     </article>
   );
@@ -296,3 +338,4 @@ export function Completed() {
     </Panel>
   );
 }
+

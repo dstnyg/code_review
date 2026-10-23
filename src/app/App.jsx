@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useTraining } from './TrainingContext';
-import { DatePicker, StorageNotice } from '../components/Common';
+import { DatePicker, StorageNotice, DeletionNotice } from '../components/Common';
 import ProblemEditor from '../components/ProblemEditor';
 import Home from '../pages/Home';
 import Daily from '../pages/Daily';
@@ -90,6 +90,7 @@ export default function App() {
         </header>
         <main id="main-content" className={styles.main}>
           <StorageNotice />
+          <DeletionNotice />
           <div key={`${pathname}:${viewDate}`}>
             <Routes>
               {pages.map(([path, , , , , Component]) => (
